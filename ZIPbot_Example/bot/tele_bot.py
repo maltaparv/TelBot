@@ -1,16 +1,13 @@
 # https://kb.selectel.ru/docs/selectel-cloud-platform/serverless/instructions/how_to_create_a_telegram_bot/
-# https://selectel.ru/blog/serverless-telegram-bot/
 import os
 from datetime import datetime
 import random
 import re
 import json
-
 import telebot
 
 # Read constant from environment variables available to edit at my.selectel.ru
 TOKEN = os.environ.get('TOKEN')
-
 HELP_MSG = """
 Commands usage help:
 /start to start
@@ -24,7 +21,6 @@ Commands usage help:
 bot = telebot.TeleBot(token=TOKEN, threaded=False)
 keyboard = telebot.types.ReplyKeyboardMarkup()
 keyboard.row('/sticker', '/start')
-keyboard.row('')
 
 
 def echo(message, username):
@@ -86,8 +82,8 @@ def set_webhook_info(message, token, url):
 
 
 def route_command(command, message):
-    """     
-    Commands router
+    """
+    Commands router.
     """
     if command == '/start':
         return start(message)
